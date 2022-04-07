@@ -1,0 +1,166 @@
+                                                                              SQL Commands
+
+______________________________________________________________________________________________________________________________________________________________________
+create database art;
+show databases;
+use art;
+
+_____________________________________________________________________________________________________________________________________________________________________
+Table - users
+
+CREATE TABLE `users` (
+  `name` varchar(20) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `phone` bigint(10) NOT NULL,
+  `gender` text NOT NULL,
+  `address` varchar(30) NOT NULL,
+  `city` varchar(20) NOT NULL,
+  `state` varchar(20) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL
+);
+
+INSERT INTO `users` (`name`, `email`, `phone`, `gender`, `address`, `city`, `state`, `username`, `password`) VALUES
+('Ankit Kumar', 'ankit@gmail.com', 7778889990, 'Male', 'Cottage 23, 4th Cross', 'Ranchi', 'Jharkhand', 'Ankit_1', 'Ankit@_1'),
+('Diya ', 'diya@gmail.com', 9998880009, 'Female', 'Cottage 22, 3rd Cross', 'Bengaluru', 'Karnataka', 'Diya_1', 'Diya@_1'),
+('Gia ', 'gia@gmail.com', 8889997770, 'Female', 'Cottage 23, 3rd Cross', 'Patna', 'Bihar', 'Gia_1', 'Gia@_1'),
+('Riya', 'riya@gmail.com', 9352558340, 'Female', 'Cottage 21, 3rd Cross', 'JAIPUR', 'RAJASTHAN', 'Riya_1', 'Riya@_1');
+
+
+Triggers `users`
+
+CREATE TRIGGER `insertU` AFTER INSERT ON `users` FOR EACH ROW insert into logsu VALUES(null, NEW.username, 'Inserted', NOW());   
+
+
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`username`);
+
+COMMIT;
+
+______________________________________________________________________________________________________________________________________________________________________
+Table - artists
+
+CREATE TABLE `artists` (
+  `name` varchar(20) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `phone` bigint(10) NOT NULL,
+  `gender` text NOT NULL,
+  `address` varchar(30) NOT NULL,
+  `city` varchar(20) NOT NULL,
+  `state` varchar(20) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL
+);
+
+
+INSERT INTO `artists` (`name`, `email`, `phone`, `gender`, `address`, `city`, `state`, `username`, `password`) VALUES
+('Bushra Ashraf', 'bushra@gmail.com', 8889997779, 'Female', 'Cottage 24, 5th Cross', 'Patna', 'Bihar', 'Bushra_1', 'Bushra@_1'),
+('Nathalia Oberoi', 'nathalia@gmail.com', 7708889990, 'Male', 'Cottage 23, 4th Cross', 'Aizwal', 'Mizoram', 'Nathalia_1', 'Nathalia@_1'),
+('Raghvendra', 'raghvendra@gmail.com', 8899008899, 'Male', 'Cottage 45, 4th Cross', 'Bhavangadh', 'Gujarat', 'Raghvendra_1', 'Raghvendra@_1'),
+('Rahul Singh', 'rahul@gmail.com', 7788990077, 'Male', 'Cottage 34, 7th Cross', 'Coonoor', 'Tamil Nadu', 'Rahul_1', 'Rahul@_1'),
+('Sumindar Kaur', 'sumindar@gmail.com', 9998880004, 'Female', 'Cottage 24, 3rd Cross', 'Bengaluru', 'Karnataka', 'Sumindar_1', 'Sumindar@_1');
+
+Triggers `artists`
+
+CREATE TRIGGER `insertA` AFTER INSERT ON `artists` FOR EACH ROW insert into logsa VALUES(null, NEW.username, 'Inserted', NOW());
+
+
+ALTER TABLE `artists`
+  ADD PRIMARY KEY (`username`);
+
+COMMIT;
+
+_____________________________________________________________________________________________________________________________________________________________________
+Table - contact
+
+CREATE TABLE `contact` (
+  `name` varchar(20) NOT NULL,
+  `phone` bigint(10) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `message` varchar(250) NOT NULL
+);
+
+INSERT INTO `contact` (`name`, `phone`, `email`, `message`) VALUES
+('Rahul Singh', 9998880006, 'rahul@gmail.com', 'Loved it!!!'),
+('Diya', 9998880006, 'diya@gamil.com', 'Nice art works!!!');
+
+COMMIT;
+
+____________________________________________________________________________________________________________________________________________________________________
+Table - producttb
+
+CREATE TABLE `producttb` (
+  `id` int(11) NOT NULL,
+  `product_name` varchar(100) NOT NULL,
+  `product_price` float NOT NULL,
+  `product_image` varchar(200) DEFAULT NULL
+);
+
+
+INSERT INTO `producttb` (`id`, `product_name`, `product_price`, `product_image`) VALUES
+(1000, 'Style of Art : Abstract\nArtist Name : Sumindar Kaur', 50, 'https://www.virtosuart.com/images/2015/paint/C-1-2015-033-American-spirit.JPG'),
+(1001, 'Style of Art : Modern\r\nArtist Name : Sumindar Kaur', 100, 'https://cdn.wrytin.com/images/wrytup/r/1024/screenshot-2019-06-18-15-32-52-430-com-google-android-googlequicksearchbox-01-jx1n7eu9.jpeg'),
+(1002, 'Style of Art : Modern\r\nArtist Name : Sumindar Kaur', 120, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTP6WMjvCuj0zKs6Y4WAHM0NetGtlrliVxIQ&usqp=CAU'),
+(1003, 'Style of Art : Impressionist\r\nArtist Name : Bushra Ashraf', 110, 'https://s31531.pcdn.co/wp-content/uploads/2018/06/MMarino_Boats-on-the-Seine-1024x674.jpg.optimal.jpg'),
+(1004, 'Style of Art : Impressionist\r\nArtist Name : Bushra Ashraf', 80, 'https://drawpaintacademy.com/wp-content/uploads/2017/11/Claude-Monet-A-Corner-Of-The-Garden-At-Montgeron-1877.jpg'),
+(1005, 'Style of Art : Pop Art\r\nArtist Name : Nathalia Oberoi', 150, 'http://static.lilcreativekids.com/uploads/2016/05/RomeroBritto-Style-Painting-1.jpg'),
+(1006, 'Style of Art : Cubism\r\nArtist Name : Nathalia Oberoi', 60, 'https://www.artyfactory.com/art_appreciation/art_movements/art-movements/cubism/picasso_cubism.jpg'),
+(1007, 'Style of Art : Surrealism\r\nArtist Name : Nathalia Oberoi', 75, 'https://ik.imagekit.io/theartling/prod/original_images/Screenshot_2019-05-07_at_4.18.02_PM.png?tr=w-'),
+(1008, 'Style of Art : Surrealism\r\nArtist Name : Nathalia Oberoi', 55, 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Indefinite_Divisibility.jpg/220px-Indefinite_Divisibility.jpg'),
+(1009, 'Style of Art : Contemporary\r\nArtist Name : Rahul Singh', 125, 'https://www.virtosuart.com/images/2016/s/C-1-2016-034---Modern-Pollination--Copy.JPG'),
+(1010, 'Style of Art : Fantasy\r\nArtist Name : Rahul Singh', 100, 'https://t4.ftcdn.net/jpg/02/92/71/21/360_F_292712121_zSrXrFMfLOI3iLXApQcD6PCNGKt0Hsh7.jpg'),
+(1011, 'Style of Art : Fantasy\r\nArtist Name : Rahul Singh', 60, 'https://media.istockphoto.com/illustrations/man-encountering-the-legendary-deer-illustration-id1172866617?k=20&m=1172866617&s=612x612&w=0&h=sBZYfFMY998bXLdMLdE77CCcEvIq9goxz1fovHzK0gs='),
+(1012, 'Style of Art : Fantasy\r\nArtist Name : Raghvendra Rathore', 80, 'https://miro.medium.com/max/3840/1*uElNyE8eMVlzLWyrIhM5Ow.jpeg'),
+(1013, 'Style of Art : Graffiti\r\nArtist Name : Raghvendra Rathore', 160, 'https://i.pinimg.com/736x/6b/db/20/6bdb20d16e9c6af9e6dfbbba463f3cfc--street-art-graffiti-art-styles.jpg');
+
+
+ALTER TABLE `producttb`
+  ADD PRIMARY KEY (`id`);
+
+COMMIT;
+
+______________________________________________________________________________________________________________________________________________________________________
+Table - user_carts
+
+CREATE TABLE `user_carts` (
+  `cart_id` int(11) NOT NULL,
+  `username` varchar(10) NOT NULL
+);
+
+
+ALTER TABLE `user_carts`
+  ADD PRIMARY KEY (`cart_id`),
+  ADD KEY `chkusr` (`username`);
+
+
+ALTER TABLE `user_carts`
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+
+ALTER TABLE `user_carts`
+  ADD CONSTRAINT `chkusr` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
+
+COMMIT;
+
+_______________________________________________________________________________________________________________________________________________________________________
+Table - orders
+
+CREATE TABLE `orders` (
+  `cart_id` int(11) NOT NULL,
+  `prod_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL
+);
+
+
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`cart_id`,`prod_id`),
+  ADD KEY `chkprod` (`prod_id`);
+
+
+ALTER TABLE `orders`
+  ADD CONSTRAINT `chkcart` FOREIGN KEY (`cart_id`) REFERENCES `user_carts` (`cart_id`),
+  ADD CONSTRAINT `chkprod` FOREIGN KEY (`prod_id`) REFERENCES `producttb` (`id`);
+
+
+COMMIT;
+
